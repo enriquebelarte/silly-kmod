@@ -1,1 +1,0 @@
-cmd_/home/enrique/Proyectos/silly-kmod/Module.symvers := sed 's/\.ko$$/\.o/' /home/enrique/Proyectos/silly-kmod/modules.order | scripts/mod/modpost    -o /home/enrique/Proyectos/silly-kmod/Module.symvers -e -i Module.symvers   -T -
