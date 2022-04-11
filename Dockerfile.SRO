@@ -21,7 +21,7 @@ ARG KVER
 WORKDIR /root/silly-kmod
 ADD Makefile .
 RUN make buildprep
-RUN make all       KVER=${KVER} KMODVER=${KMODVER}
-RUN make install   KVER=${KVER} KMODVER=${KMODVER}
+#RUN make all       KVER=${KVER} KMODVER=${KMODVER}
+#RUN make install   KVER=${KVER} KMODVER=${KMODVER}
 
 RUN echo "silly" > /etc/modules.d/silly.conf
