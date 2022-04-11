@@ -7,7 +7,7 @@ WORKDIR /build/
 ARG KMODVER
 
 # Grab the software from upstream
-RUN git clone https://github.com/ebelarte/silly-kmod.git
+RUN git clone https://github.com/enriquebelarte/silly-kmod.git
 WORKDIR silly-kmod
 
 # Expecting kernel version as an input to the build
