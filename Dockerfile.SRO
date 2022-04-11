@@ -1,0 +1,29 @@
+ARG IMAGE=registry.access.redhat.com/ubi8/ubi
+
+FROM $IMAGE
+WORKDIR /build/
+
+# Expecting kmod software version as an input to the build
+ARG KMODVER
+
+# Grab the software from upstream
+RUN git clone https://github.com/ebelarte/silly-kmod.git
+WORKDIR silly-kmod
+
+# Expecting kernel version as an input to the build
+ARG KVER
+
+# Note, your host must have access to repos where kernel developement
+# packages can be installed. If it doesn't the following steps will
+# fail
+
+# Build the module
+RUN make all       KVER=${KVER} KMODVER=${KMODVER}
+RUN make install   KVER=${KVER} KMODVER=${KMODVER}
+
+# Add the helper tools
+WORKDIR /root/silly-kmod
+ADD Makefile .
+RUN make install
+
+RUN echo "silly" > /etc/modules.d/silly.conf
