@@ -18,12 +18,10 @@ ARG KVER
 # fail
 
 # Build the module
-RUN make all       KVER=${KVER} KMODVER=${KMODVER}
-RUN make install   KVER=${KVER} KMODVER=${KMODVER}
-
-# Add the helper tools
 WORKDIR /root/silly-kmod
 ADD Makefile .
-RUN make install
+RUN make buildprep
+RUN make all       KVER=${KVER} KMODVER=${KMODVER}
+RUN make install   KVER=${KVER} KMODVER=${KMODVER}
 
 RUN echo "silly" > /etc/modules.d/silly.conf
