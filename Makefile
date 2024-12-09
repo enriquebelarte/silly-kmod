@@ -17,5 +17,3 @@ clean:
 install:
 	install -v -m 755 -d /lib/modules/$(KVER)/
 	install -v -m 644 silly.ko        /lib/modules/$(KVER)/silly.ko
-	depmod -a
-
